@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustafa Wali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #article-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .article {
+            width: 80%;
+            max-width: 600px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .article h3 {
+            margin: 0 0 10px;
+        }
+        .article p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Mustafa Wali's Article Page</h1>
+    <p>Write an article and share it with everyone!</p>
+    <form id="article-form">
+        <input type="text" id="article-title" placeholder="Title" required style="width: 60%; padding: 10px; margin-bottom: 10px;">
+        <textarea id="article-content" placeholder="Write your article here..." rows="5" required style="width: 60%; padding: 10px;"></textarea>
+        <button type="submit">Submit Article</button>
+    </form>
+
+    <div id="article-container">
+        <!-- Articles will appear here -->
+    </div>
+
+    <script>
+        const articleForm = document.getElementById('article-form');
+        const articleContainer = document.getElementById('article-container');
+
+        articleForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('article-title').value;
+            const content = document.getElementById('article-content').value;
+
+            // Create article element
+            const article = document.createElement('div');
+            article.classList.add('article');
+
+            const articleTitle = document.createElement('h3');
+            articleTitle.textContent = title;
+
+            const articleContent = document.createElement('p');
+            articleContent.textContent = content;
+
+            article.appendChild(articleTitle);
+            article.appendChild(articleContent);
+
+            // Add article to container
+            articleContainer.appendChild(article);
+
+            // Clear the form
+            articleForm.reset();
+        });
+    </script>
+</body>
+</html>
